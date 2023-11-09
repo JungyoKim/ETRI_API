@@ -24,10 +24,10 @@
   import { onMount } from 'svelte';
 
 
-  let resizedBase64; // 해상도가 낮춰진 이미지
+  let resizedBase64;
 
   onMount(async () => {
-    resizedBase64 = await resizeBase64Img(base64, 100); // 100은 원하는 너비입니다.
+    resizedBase64 = await resizeBase64Img(base64, 700);
   });
 
   function resizeBase64Img(base64, newWidth) {
@@ -35,7 +35,6 @@
       let img = new Image();
       img.src = base64;
       img.onload = () => {
-        // 원본 이미지의 비율을 유지하면서 새로운 높이를 계산합니다.
         let newHeight = img.height * (newWidth / img.width);
         
         let canvas = document.createElement('canvas');
